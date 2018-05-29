@@ -187,11 +187,11 @@ a {
     }
 
     .phone {
-        max-width: 380px;
-        padding: 110px 20px;
-        margin: 40px auto;
+        max-width: 420px;
+        padding: 80px 20px;
+        margin: 20px auto;
         background: black;
-        height: calc(100vh - 300px);
+        height: calc(100vh - 200px);
         border-radius: 50px;
         box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
     }
