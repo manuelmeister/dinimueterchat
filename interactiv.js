@@ -22,6 +22,9 @@ function removeButtons(){
 
 function addMessage(text,source = 'server'){
     let message = document.createElement('li');
+    message.setAttribute('itemscope','');
+    message.setAttribute('itemprop','hasPart');
+    message.setAttribute('itemtype','http://schema.org/Message');
     message.classList.add('message');
     message.classList.add('message-' + source);
     message.innerText = text;
