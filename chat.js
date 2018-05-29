@@ -5,7 +5,7 @@ function init(){
     let buttonArray = [new Button('Hoi Mami',0,showWriting.bind(null,wait,mood)),
     new Button('Hallo Mueter',0, showWriting.bind(null,wait,mood)), 
     new Button('Sali Mami',0,showWriting.bind(null,wait,mood)),
-    new Button('Festivalquestion',0,festivalQuestion)
+    new Button('catVideo',0,catVideo)
     ];
     setButtons(buttonArray);
 }
@@ -128,9 +128,9 @@ function catVideoAnswerNeutral(){
 }
 
 function sendCatVideo(){
-    let buttonArray = [new Button('Die ist wirklich zuckersüss.',1,showWriting.bind(null,wait,sendCatVideo('nice'))), 
-	    new Button('Ugh. Unnötig.',-1,showWriting.bind(null,wait,sendCatVideo('negative'))),
-	    new Button('Haha, jaja.',0,showWriting.bind(null,wait,sendCatVideo('neutral')))];
+    let buttonArray = [new Button('Die ist wirklich zuckersüss.',1,showWriting.bind(null,wait,sendCatVideoAnswerNice)), 
+	    new Button('Ugh. Unnötig.',-1,showWriting.bind(null,wait,sendCatVideoAnswerNegative)),
+	    new Button('Haha, jaja.',0,showWriting.bind(null,wait,sendCatVideoAnswerNeutral))];
     setButtons(buttonArray);
     addMessage('Schau mal','server');
 	    showWriting(wait,function(){
@@ -140,33 +140,81 @@ function sendCatVideo(){
 }
 
 
-function sendCatVideo(input){
-	var answer = input
-	switch(input) {
-	    case 'nice':
-	        addMessage('Eben doch.','server');
-	        break;
-	    case 'neutral':
-	        addMessage('neutral.','server');
-	        break;
-	    case 'negative':
-	        addMessage('negative','server');
-	        break;
-	}
-
+function sendCatVideoAnswerNice() {
+		addMessage('Sag ich ja immer :)','server');
+		showWriting(wait,function(){
+	    	festivalAbout()
+   		})
 }
 
+function sendCatVideoAnswerNeutral() {
+		addMessage('Was jaja? Katzen sind super.','server');
+		showWriting(wait,function(){
+	    	festivalAbout()
+   		})
+}
+
+function sendCatVideoAnswerNegative() {
+		addMessage('Du bist so herzlos.','server');
+		showWriting(wait,function(){
+	    	festivalAbout()
+   		})
+}
 
 
 
 
 function festivalAbout(){
-
+	let buttonArray = [new Button('Es ist ein Musik-Festival. Ich kann da ganz viel lernen über Popkultur und Soziale Formen..',1,showWriting.bind(null,wait,festivalAboutNice)), 
+	    new Button('Tu doch nicht so. Du weißt, was ein Festival ist.',-1,showWriting.bind(null,wait,festivalAboutNegative)),
+	    new Button('Es kommen supercoole Bands, und alle meine Freunde gehen hin!',0,showWriting.bind(null,wait,festivalAboutNeutral))];
+    setButtons(buttonArray);
+    addMessage('Also, worum geht es denn bei diesem Festival?','server');
 }
 
 
 
+function festivalAboutNice() {
+		addMessage('Hmm.. Klingt gar nicht so schlecht :)','server');
+		showWriting(wait,function(){
+	    	festivalAbout()
+   		})
+}
+
+function festivalAboutNeutral() {
+		addMessage('Wenn alle deine Freunde aus dem Fenster springen, tust du das auch?','server');
+		showWriting(wait,function(){
+	    	festivalAbout()
+   		})
+}
+
+function festivalAboutNegative() {
+		addMessage('Wow, bist du heute mit dem falschen Fuss aufgestanden?','server');
+		showWriting(wait,function(){
+		    	festivalNegativeAnswer()
+   		})
+}
 
 
+function festivalNegativeAnswer(){
+	let buttonArray = [new Button('Sorry :( Hatte einen strengen Tag.',1,showWriting.bind(null,wait,festivalAboutAnswerNice)), 
+	    new Button('*eye roll*',-1,showWriting.bind(null,wait,festivalAboutAnswerNegative))];
+    setButtons(buttonArray);
+    addMessage('Das finde ich nicht nett von dir :(','server');
+}
+
+function festivalAboutAnswerNice() {
+		addMessage('Schon ok, das verstehe ich.','server');
+		showWriting(wait,function(){
+	    	festivalAboutAnswer()
+   		})
+}
+
+function festivalAboutAnswerNegative() {
+		addMessage(':(','server');
+		showWriting(wait,function(){
+		    	festivalNegativeAnswer()
+   		})
+}
 
 
