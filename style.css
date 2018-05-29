@@ -4,6 +4,10 @@ html,body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 }
 
+body {
+    background: #fff;
+}
+
 h1 {
     margin: 20px auto 5px;
 }
@@ -23,6 +27,7 @@ main {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background: #fff;
 }
 
 ul.messages {
@@ -133,6 +138,54 @@ button {
     }
 }
 
+a {
+    color: #2196f3;
+    text-decoration-color: #0277BD;
+}
+
+.info {
+    text-decoration: none;
+    border: 1px solid #2196f3;
+    background: #E3F2FD;
+    padding: 5px;
+    margin: 25px;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    display: block;
+    border-radius: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.infoblock {
+    margin: 20px;
+}
+
+.infoblock p {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 540px) {
+    body {
+        background: #607D8B;
+    }
+
+    main {
+        height: 100%;
+    }
+
+    .phone {
+        max-width: 380px;
+        padding: 110px 20px;
+        margin: 40px auto;
+        background: black;
+        height: calc(100vh - 300px);
+        border-radius: 50px;
+        box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+    }
+}
 
 /**
 TYPING INDICATOR
