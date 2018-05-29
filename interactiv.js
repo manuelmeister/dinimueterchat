@@ -1,4 +1,4 @@
-var impact = 0;
+let impact = 0;
 
 function setButtons(arr){
     removeButtons();
@@ -9,6 +9,7 @@ function setButtons(arr){
         button.addEventListener('click',function () {
             addMessage(item.text,'client');
             impact += item.impact;
+            removeButtons();
         });
         button.addEventListener('click',item.callback);
         document.querySelector('.buttons').appendChild(button);
@@ -29,17 +30,17 @@ function addMessage(text,source){
 }
 
 function showTyping(duration,callback){
-    document.querySelector('.typing').style.display = 'block';
+    document.querySelector('.writing').style.visibility = 'visible';
     setTimeout(function(){
-        document.querySelector('.typing').style.display = 'none';
+        document.querySelector('.writing').style.visibility = 'hidden';
         callback();
     },duration);
 }
 
 function showWriting(duration,callback){
-    document.querySelector('.writing').style.visibility = 'visible';
+    document.querySelector('.typing-message').style.display = 'block';
     setTimeout(function(){
-        document.querySelector('.writing').style.visibility = 'hidden';
+        document.querySelector('.typing-message').style.display = 'none';
         callback();
     },duration);
 }

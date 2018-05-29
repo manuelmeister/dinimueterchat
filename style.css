@@ -78,12 +78,15 @@ ul.messages {
 }
 
 .ctrl {
+    flex: none;
     display: flex;
-    padding: 10px;
+    flex-direction: column;
+    padding: 20px;
 }
 
 .buttons {
-    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 button {
@@ -95,12 +98,12 @@ button {
     margin: 10px;
     border-radius: 25px;
     min-width: 100px;
+    flex-grow: 1;
 }
 
 
-.typing {
-    padding: 20px;
-    display: none;
+.typing-message {
+     display: none;
 }
 
 .writing {
@@ -135,17 +138,16 @@ button {
 TYPING INDICATOR
  */
 .typing-indicator {
-    background-color: #E6E7ED;
+    /* background-color: #E6E7ED; */
     will-change: transform;
     width: auto;
     border-radius: 60px;
-    padding: 10px;
+    /* padding: 10px; */
     display: table;
     margin: 0 auto;
     position: relative;
 }
 .typing-indicator::before, .typing-indicator::after {
-    content: '';
     position: absolute;
     bottom: -3px;
     left: -3px;
@@ -161,11 +163,11 @@ TYPING INDICATOR
     bottom: -10px;
 }
 .typing-indicator span {
-    height: 15px;
-    width: 15px;
+    height: 14px;
+    width: 14px;
     float: left;
-    margin: 0 1px;
-    background-color: #9E9EA1;
+    margin: 3px 1px 1px;
+    background-color: rgba(0, 0, 0, 0.5);
     display: block;
     border-radius: 50%;
     opacity: 0.4;
