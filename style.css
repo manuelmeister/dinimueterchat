@@ -47,6 +47,7 @@ ul.messages {
     border-radius: 5px;
     background: #eee;
     position: relative;
+    max-width: 70%;
 }
 
 .message::before {
