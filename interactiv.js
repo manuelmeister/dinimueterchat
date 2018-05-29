@@ -20,7 +20,7 @@ function removeButtons(){
     document.querySelector('.buttons').innerHTML = '';
 }
 
-function addMessage(text,source){
+function addMessage(text,source = 'server'){
     let message = document.createElement('li');
     message.classList.add('message');
     message.classList.add('message-' + source);
