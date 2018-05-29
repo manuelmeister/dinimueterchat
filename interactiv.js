@@ -1,15 +1,22 @@
+var impact = 0;
+
 function setButtons(arr){
-    document.querySelector('.buttons').innerHTML = '';
+    removeButtons();
     arr.forEach(function(item){
         let button = document.createElement('button');
         button.classList.add('chatbutton');
         button.innerText = item.text;
         button.addEventListener('click',function () {
             addMessage(item.text,'client');
+            impact += item.impact;
         });
         button.addEventListener('click',item.callback);
         document.querySelector('.buttons').appendChild(button);
     })
+}
+
+function removeButtons(){
+    document.querySelector('.buttons').innerHTML = '';
 }
 
 function addMessage(text,source){
