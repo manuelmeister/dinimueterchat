@@ -30,9 +30,9 @@ function showTyping(duration,callback){
 }
 
 function showWriting(duration,callback){
-    document.querySelector('.writing').style.display = 'block';
+    document.querySelector('.writing').style.visibility = 'visible';
     setTimeout(function(){
-        document.querySelector('.writing').style.display = 'none';
+        document.querySelector('.writing').style.visibility = 'hidden';
         callback();
     },duration);
 }

@@ -5,7 +5,7 @@ function init(){
 }
 
 function testing(){
-    let buttonArray = [new Button('figdi',0,showTyping.bind(null,1000,testing)),new Button('what',0,testing)];
+    let buttonArray = [new Button('figdi',0,showWriting.bind(null,2000,testing)),new Button('what',0,testing)];
     setButtons(buttonArray);
     addMessage('blub','server');
 }

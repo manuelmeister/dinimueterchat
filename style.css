@@ -60,6 +60,7 @@ ul.messages {
     border-top-color: #ece5dd;
     border-width: 13px 0 0 13px;
     left: -10px;
+    border-top-left-radius: 5px;
 }
 
 .message-client {
@@ -71,6 +72,7 @@ ul.messages {
     border-top-color: #dcf8c6;
     border-width: 13px 13px 0 0;
     right: -10px;
+    border-top-right-radius: 5px;
 }
 
 .ctrl {
