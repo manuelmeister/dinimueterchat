@@ -13,7 +13,9 @@ function init(){
 /// Wie geht es dir? Moodcheck
 
 function mood(){
-    let buttonArray = [new Button('Ganz gut! :)',0,showWriting.bind(null,wait,moodHappy)), new Button('Nicht so gut :(',0,showWriting.bind(null,wait,moodUnhappy)), new Button('Solala',0,showWriting.bind(null,wait,moodSolala))];
+    let buttonArray = [new Button('Ganz gut! :)',0,showWriting.bind(null,wait,moodHappy)), 
+    new Button('Nicht so gut :(',0,showWriting.bind(null,wait,moodUnhappy)), 
+    new Button('Solala',0,showWriting.bind(null,wait,moodSolala))];
     setButtons(buttonArray);
     addMessage('Hallo du! Wie geht es dir? :)','server');
 }
@@ -131,8 +133,7 @@ function sendCatVideo(){
     let buttonArray = [new Button('Die ist wirklich zuckersüss.',1,showWriting.bind(null,wait,sendCatVideoAnswerNice)), 
 	    new Button('Ugh. Unnötig.',-1,showWriting.bind(null,wait,sendCatVideoAnswerNegative)),
 	    new Button('Haha, jaja.',0,showWriting.bind(null,wait,sendCatVideoAnswerNeutral))];
-    setButtons(buttonArray);
-    addMessage('Schau mal','server');
+    	addMessage('Schau mal','server');
 	    showWriting(wait,function(){
 	    	addMessage('Die ist doch megasüss!','server');
 	  		setButtons(buttonArray);
@@ -162,7 +163,7 @@ function sendCatVideoAnswerNegative() {
 }
 
 
-
+// Festival what? Festival ONE
 
 function festivalAbout(){
 	let buttonArray = [new Button('Es ist ein Musik-Festival. Ich kann da ganz viel lernen über Popkultur und Soziale Formen..',1,showWriting.bind(null,wait,festivalAboutNice)), 
@@ -177,16 +178,23 @@ function festivalAbout(){
 function festivalAboutNice() {
 		addMessage('Hmm.. Klingt gar nicht so schlecht :)','server');
 		showWriting(wait,function(){
-	    	festivalAbout()
+	    	festivalWhen()
    		})
 }
 
 function festivalAboutNeutral() {
+		let buttonArray = [new Button('Mami..',0,showWriting.bind(null,wait,festivalAboutNeutral2))]
 		addMessage('Wenn alle deine Freunde aus dem Fenster springen, tust du das auch?','server');
+		setButtons(buttonArray)
+}
+
+function festivalAboutNeutral2() {
+		addMessage('Kein "Mami..."! Du weisst doch, dass ich recht habe.','server');
 		showWriting(wait,function(){
-	    	festivalAbout()
+	    	festivalWhen()
    		})
 }
+
 
 function festivalAboutNegative() {
 		addMessage('Wow, bist du heute mit dem falschen Fuss aufgestanden?','server');
@@ -206,15 +214,76 @@ function festivalNegativeAnswer(){
 function festivalAboutAnswerNice() {
 		addMessage('Schon ok, das verstehe ich.','server');
 		showWriting(wait,function(){
-	    	festivalAboutAnswer()
+	    	festivalWhen()
    		})
 }
 
 function festivalAboutAnswerNegative() {
 		addMessage(':(','server');
 		showWriting(wait,function(){
-		    	festivalNegativeAnswer()
+		    	festivalWhen()
    		})
 }
 
 
+// Wann ist denn das Festival? Festival TWO
+
+function festivalWhen() {
+		let buttonArray = [new Button('Mitte Juli',1,showWriting.bind(null,wait,festivalWhenNice)), 
+	    new Button('Kann dir doch egal sein.',-1,showWriting.bind(null,wait,festivalWhenNegative))]
+    	setButtons(buttonArray);
+    	addMessage('Wann ist denn dieses Festival?','server');
+
+}
+
+
+function festivalWhenNice() {
+		let buttonArray = [new Button('Mami..',0,showWriting.bind(null,wait,festivalAboutNeutral2))]
+		addMessage('Aber dann ist doch Tante Esthers Geburtstag!','server');
+		showWriting(wait,function(){
+	    	festivalWhen()
+   		})
+}
+
+function festivalWhenNegative() {
+		let buttonArray = [new Button('Mami..',0,showWriting.bind(null,wait,festivalAboutNeutral2))]
+		addMessage('Wenn alle deine Freunde aus dem Fenster springen, tust du das auch?','server');
+		setButtons(buttonArray)
+}
+
+
+
+
+
+// ENDINGS
+
+
+function endGood(){
+    addMessage('Also... ','server');
+	    showWriting(wait,function(){
+	    	addMessage('Die ist doch megasüss!','server');
+	    	showWriting(wait,function(){
+	    		addMessage('Die ist doch megasüss!','server');
+    		})
+    	})
+}
+
+function endNeutral(){
+    addMessage('Also... ','server');
+	    showWriting(wait,function(){
+	    	addMessage('Die ist doch megasüss!','server');
+	    	showWriting(wait,function(){
+	    		addMessage('Die ist doch megasüss!','server');
+    		})
+    	})
+}
+
+function endBad(){
+    addMessage('Also... ','server');
+	    showWriting(wait,function(){
+	    	addMessage('Die ist doch megasüss!','server');
+	    	showWriting(wait,function(){
+	    		addMessage('Die ist doch megasüss!','server');
+    		})
+    	})
+}
