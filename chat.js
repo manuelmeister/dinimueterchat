@@ -1,4 +1,4 @@
-let wait = 500;
+let wait = 2000;
 
 
 function init() {

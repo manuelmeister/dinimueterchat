@@ -2,18 +2,20 @@ let impact = 0;
 
 function setButtons(arr){
     removeButtons();
-    arr.forEach(function(item){
-        let button = document.createElement('button');
-        button.classList.add('chatbutton');
-        button.innerHTML = item.text;
-        button.addEventListener('click',function () {
-            addMessage(item.text,'client');
-            impact += item.impact;
-            removeButtons();
-        });
-        button.addEventListener('click',item.callback);
-        document.querySelector('.buttons').appendChild(button);
-    })
+    setTimeout(function(){
+        arr.forEach(function(item){
+            let button = document.createElement('button');
+            button.classList.add('chatbutton');
+            button.innerHTML = item.text;
+            button.addEventListener('click',function () {
+                addMessage(item.text,'client');
+                impact += item.impact;
+                removeButtons();
+            });
+            button.addEventListener('click',item.callback);
+            document.querySelector('.buttons').appendChild(button);
+        })
+    },1000);
 }
 
 function removeButtons(){
