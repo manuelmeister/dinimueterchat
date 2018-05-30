@@ -20,6 +20,7 @@ function setButtons(arr){
 
 function removeButtons(){
     document.querySelector('.buttons').innerHTML = '';
+	scrollToBottom();
 }
 
 function addMessage(text,source = 'server'){
