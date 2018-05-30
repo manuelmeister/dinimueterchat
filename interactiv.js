@@ -14,13 +14,16 @@ function setButtons(arr, wait = 500){
             });
             button.addEventListener('click',item.callback);
             document.querySelector('.buttons').appendChild(button);
-        })
+			scrollToBottom();
+        });
+		document.querySelector('.buttons').style.display = 'flex';
 		scrollToBottom();
     },wait);
 }
 
 function removeButtons(){
     document.querySelector('.buttons').innerHTML = '';
+    document.querySelector('.buttons').style.display = 'none';
 	scrollToBottom();
 }
 
@@ -34,22 +37,20 @@ function addMessage(text,source = 'server'){
     message.innerHTML = text;
     document.querySelector('.messages').appendChild(message);
     scrollToBottom();
-}
-
-function showTyping(duration,callback){
-    document.querySelector('.writing').style.visibility = 'visible';
-    setTimeout(function(){
-        document.querySelector('.writing').style.visibility = 'hidden';
-        callback();
-    },duration);
+    document.querySelectorAll('iframe').forEach(function (elem) {
+		elem.onload = scrollToBottom();
+	});
 }
 
 function showWriting(duration,callback){
-    document.querySelector('.typing-message').style.display = 'block';
+	scrollToBottom();
+    document.querySelector('.typing-message').style.display = 'inline-block';
     setTimeout(function(){
         document.querySelector('.typing-message').style.display = 'none';
         callback();
+        scrollToBottom();
     },duration);
+	scrollToBottom();
 }
 
 function scrollToBottom(){
