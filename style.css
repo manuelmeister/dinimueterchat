@@ -88,7 +88,7 @@ ul.messages {
     flex: none;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 0 20px 20px;
 }
 
 .buttons {
@@ -110,7 +110,7 @@ button {
 
 
 .typing-message {
-     display: none;
+    /* display: none; */
 }
 
 .writing {
@@ -227,10 +227,10 @@ TYPING INDICATOR
     bottom: -10px;
 }
 .typing-indicator span {
-    height: 14px;
-    width: 14px;
+    height: 13px;
+    width: 13px;
     float: left;
-    margin: 3px 1px 1px;
+    margin: 3px 2px 2px;
     background-color: rgba(0, 0, 0, 0.5);
     display: block;
     border-radius: 50%;
