@@ -110,34 +110,7 @@ button {
 
 
 .typing-message {
-    /* display: none; */
-}
-
-.writing {
-    visibility: hidden;
-}
-
-.writing::after {
-    display: inline-block;
-    content: " ";
-    animation: 3s writinganimation infinite linear;
-    width: 12px;
-    text-align: left;
-}
-
-@keyframes writinganimation {
-    0% {
-        content: "   ";
-    }
-    25% {
-        content: ".  ";
-    }
-    50% {
-        content: ".. ";
-    }
-    75% {
-        content: "...";
-    }
+    display: none;
 }
 
 a {
