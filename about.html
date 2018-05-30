@@ -1,24 +1,58 @@
 <!DOCTYPE html>
 <html lang="de_CH">
 <head>
-    <meta charset="UTF-8">
-    <title>About us</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<title>About us</title>
+	<link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="phone">
-    <main>
-        <a href="index.html" class="back" title="Back" aria-label="Back to the Bot">⬅</a>
-        <div class="title">
-            <h1>Who made this?</h1>
-            <h6>Dinimueter 😂</h6>
-        </div>
-        <section class="infoblock">
-            <p>Made with ❤️ by <a href="https://meister.io/">Manuel Meister</a> & Jasmine Jacot</p>
-            <p></p>
-        </section>
-    </main>
+	<main>
+		<a class="topbar" href="index.html">
+			<span class="profileimage back" title="Back" aria-label="Back to the Bot">⬅</span>
+			<div class="metainfo">
+				<h1>Über dini Mueter</h1>
+				<h6>Version 1.0</h6>
+			</div>
+		</a>
+		<div class="messagewrapper">
+			<ul class="messages aboutsite" itemtype="http://schema.org/Conversation">
+				<li itemscope="" itemprop="hasPart" itemtype="http://schema.org/Message" class="message message-client">
+					Was ist das?
+				</li><li itemscope="" itemprop="hasPart" itemtype="http://schema.org/Message" class="message message-server">
+					Ja, immer diese Müttern. Studiumsprojekt. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, rem!<br>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dicta iure maiores minima mollitia odit officia! Blanditiis commodi deserunt reiciendis!
+				</li>
+				<li itemscope="" itemprop="hasPart" itemtype="http://schema.org/Message" class="message message-client">
+					Wer hat diese geniale Idee?
+				</li>
+				<li itemscope="" itemprop="hasPart" itemtype="http://schema.org/Message" class="message message-server">
+					<strong><a href="https://meister.io/">Manuel Meister</a></strong> und <strong>Jasmine Jacot</strong>
+				</li>
+				<li itemscope="" itemprop="hasPart" itemtype="http://schema.org/Message" class="message message-client">
+					Wer ist da verantwortlich?
+				</li>
+				<li itemscope="" itemprop="hasPart" itemtype="http://schema.org/Message" class="message message-server">
+					<p>Studiengangsleitung: <br><strong>Nico Lypitkas</strong></p>
+					<p>Dozenten: <br><strong>Christian Holst, Marc Uricher</strong></p>
+					<p>Assistenz: <br><strong>Caroline Feder</strong></p>
+				</li>
+				<li itemscope="" itemprop="hasPart" itemtype="http://schema.org/Message" class="message message-client">
+					Habt ihr noch einen besonderen Dank?
+				</li>
+				<li itemscope="" itemprop="hasPart" itemtype="http://schema.org/Message" class="message message-server">
+					<strong>Christina & Suleika</strong><br>
+					Danke an unsere Mütter für ihre Unterstützung
+				</li>
+			</ul>
+		</div>
+		<div class="ctrl">
+			<div class="buttons">
+				<span>Made in 🇨🇭 with ❤️ and ☕️</span>
+			</div>
+		</div>
+	</main>
 </div>
 </body>
 </html>

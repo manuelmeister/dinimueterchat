@@ -143,11 +143,11 @@ a {
 
 .back {
 	display: block;
-	font-size: 32px;
+	font-size: 42px;
 	color: rgba(0, 0, 0, 0.41);
 	text-decoration: none;
-	position: absolute;
-	margin: 25px 20px;
+	/* position: absolute; */
+	/* margin: 25px 20px; */
 }
 
 .infoblock {
@@ -263,6 +263,8 @@ TYPING INDICATOR
 	box-sizing: border-box;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
+	flex: none;
+	text-decoration: none;
 }
 
 .profileimage {
@@ -272,6 +274,7 @@ TYPING INDICATOR
 	border-radius: 50%;
 	overflow: hidden;
 	margin-right: 15px;
+	text-align: center;
 }
 
 .profileimage img {
@@ -305,4 +308,8 @@ h1 {
 h6 {
 	font-size: 15px;
 	color: rgba(0, 0, 0, 0.6);
+}
+
+.aboutsite p {
+	margin: 0 0 5px;
 }
