@@ -15,6 +15,7 @@ function setButtons(arr, wait = 500){
             button.addEventListener('click',item.callback);
             document.querySelector('.buttons').appendChild(button);
         })
+		scrollToBottom();
     },wait);
 }
 
