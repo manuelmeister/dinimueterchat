@@ -1,11 +1,11 @@
-let wait = 2000;
+let wait = 20;
 
 
 function init() {
     let buttonArray = [new Button('Hoi Mami', 0, showWriting.bind(null, wait, mood)),
         new Button('Hallo Mueter', 0, showWriting.bind(null, wait, mood)),
         new Button('Sali Mami', 0, showWriting.bind(null, wait, mood)),
-        new Button('catVideo', 0, catVideo)
+        new Button('catVideo', 0, festivalAbout)
     ];
     setButtons(buttonArray);
 }
@@ -206,7 +206,7 @@ function festivalAboutNegative() {
 
 function festivalNegativeAnswer() {
     let buttonArray = [new Button('Sorry :( Hatte einen strengen Tag.', 1, showWriting.bind(null, wait, festivalAboutAnswerNice)),
-        new Button('*eye roll*', -1, showWriting.bind(null, wait, festivalAboutAnswerNegative))];
+        new Button('🙄', -1, showWriting.bind(null, wait, festivalAboutAnswerNegative))];
     setButtons(buttonArray);
     addMessage('Das finde ich nicht nett von dir :(', 'server');
 }
@@ -238,18 +238,61 @@ function festivalWhen() {
 
 
 function festivalWhenNice() {
-    let buttonArray = [new Button('Mami..', 0, showWriting.bind(null, wait, festivalAboutNeutral2))]
+    addMessage('Aber dann ist doch Tante Esthers Geburtstag!', 'server');
+    showWriting(wait, function () {
+        birthdayAttend()
+    })
+}
+
+function festivalWhenNegative() {
+    let buttonArray = [new Button('ok, ok. Es ist im Juli', 0, showWriting.bind(null, wait, festivalWhenNegative2))]
+    addMessage('Warum bist du so frech zu mir? Du willst schliesslich etwas von mir..', 'server');
+    setButtons(buttonArray)
+    
+}
+
+function festivalWhenNegative2() {
+    let buttonArray = [new Button('Mitte', 0, showWriting.bind(null, wait, festivalWhenNice))]
+    addMessage('Wann im Juli? Lass dir doch nicht alles aus der Nase ziehen.', 'server');
+    setButtons(buttonArray)
+    
+}
+
+
+// Birthday
+function birthdayAttend() {
+	let buttonArray = [new Button('Na klar! Ich freue mich bereits auf das Grillfest :)', 1, showWriting.bind(null, wait, birthdayAttendNice)),
+						new Button('Ich bin noch nicht ganz sicher..', 0, showWriting.bind(null, wait, birthdayAttendNeutral)),
+						new Button('Warum sollte ich? Die mochte ich eh nie.', -1, showWriting.bind(null, wait, birthdayAttendNegative))]
+	setButtons();
+    addMessage('Da kommst du doch, oder?', 'server');
+}
+
+function birthdayAttendNice() {
     addMessage('Aber dann ist doch Tante Esthers Geburtstag!', 'server');
     showWriting(wait, function () {
         festivalWhen()
     })
 }
 
-function festivalWhenNegative() {
-    let buttonArray = [new Button('Mami..', 0, showWriting.bind(null, wait, festivalAboutNeutral2))]
-    addMessage('Wenn alle deine Freunde aus dem Fenster springen, tust du das auch?', 'server');
+function birthdayAttendNeutral() {
+    let buttonArray = [new Button('ok, ok. Es ist im Juli', 0, showWriting.bind(null, wait, festivalWhenNegative2))]
+    addMessage('Warum bist du so frech zu mir? Du willst schliesslich etwas von mir..', 'server');
     setButtons(buttonArray)
+    
 }
+
+function birthdayAttendNegative() {
+    let buttonArray = [new Button('Mitte', 0, showWriting.bind(null, wait, festivalAboutNeutral2))]
+    addMessage('Wann im Juli? Lass dir doch nicht alles aus der Nase ziehen.', 'server');
+    setButtons(buttonArray)
+    
+}
+
+
+
+
+
 
 
 // ENDINGS
