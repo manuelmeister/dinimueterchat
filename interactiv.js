@@ -1,5 +1,22 @@
 let impact = 0;
 
+let idleTimeLeft = 0;
+
+let onlineCheck = setInterval(function () {
+	if(idleTimeLeft > 5){
+		idleTimeLeft -= 5;
+	} else {
+		idleTimeLeft = 0;
+		let update = new Date();
+		let hours = update.getHours();
+		let minutes = update.getMinutes();
+		if(minutes < 10){
+			minutes = '0' + minutes;
+		}
+		document.querySelector('.lastonline').innerText = 'Zuletzt online: ' + hours + ':' + minutes;
+	}
+}, 5000);
+
 function setButtons(arr, wait = 500){
     removeButtons();
     setTimeout(function(){
@@ -28,7 +45,10 @@ function removeButtons(){
 }
 
 function addMessage(text,source = 'server'){
-    let message = document.createElement('li');
+	if(source === 'server'){
+		idleTimeLeft = 20;
+	}
+	let message = document.createElement('li');
     message.setAttribute('itemscope','');
     message.setAttribute('itemprop','hasPart');
     message.setAttribute('itemtype','http://schema.org/Message');
@@ -45,6 +65,7 @@ function addMessage(text,source = 'server'){
 function showWriting(duration,callback){
 	scrollToBottom();
     document.querySelector('.typing-message').style.display = 'inline-block';
+    document.querySelector('.lastonline').innerText = 'online';
     setTimeout(function(){
         document.querySelector('.typing-message').style.display = 'none';
         callback();
