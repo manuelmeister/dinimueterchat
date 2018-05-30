@@ -1,6 +1,6 @@
 let impact = 0;
 
-function setButtons(arr){
+function setButtons(arr, wait = 500){
     removeButtons();
     setTimeout(function(){
         arr.forEach(function(item){
@@ -15,7 +15,7 @@ function setButtons(arr){
             button.addEventListener('click',item.callback);
             document.querySelector('.buttons').appendChild(button);
         })
-    },1000);
+    },wait);
 }
 
 function removeButtons(){
