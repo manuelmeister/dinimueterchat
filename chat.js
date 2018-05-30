@@ -133,7 +133,8 @@ function sendCatVideo(){
     let buttonArray = [new Button('Die ist wirklich zuckersüss.',1,showWriting.bind(null,wait,sendCatVideoAnswerNice)), 
 	    new Button('Ugh. Unnötig.',-1,showWriting.bind(null,wait,sendCatVideoAnswerNegative)),
 	    new Button('Haha, jaja.',0,showWriting.bind(null,wait,sendCatVideoAnswerNeutral))];
-    	addMessage('Schau mal','server');
+
+    	addMessage('Schau mal<br><br><div class="aspect-ratio"><iframe src="https://giphy.com/embed/3oriO0OEd9QIDdllqo" width="480" height="477" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>','server');
 	    showWriting(wait,function(){
 	    	addMessage('Die ist doch megasüss!','server');
 	  		setButtons(buttonArray);

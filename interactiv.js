@@ -5,7 +5,7 @@ function setButtons(arr){
     arr.forEach(function(item){
         let button = document.createElement('button');
         button.classList.add('chatbutton');
-        button.innerText = item.text;
+        button.innerHTML = item.text;
         button.addEventListener('click',function () {
             addMessage(item.text,'client');
             impact += item.impact;
@@ -27,7 +27,7 @@ function addMessage(text,source = 'server'){
     message.setAttribute('itemtype','http://schema.org/Message');
     message.classList.add('message');
     message.classList.add('message-' + source);
-    message.innerText = text;
+    message.innerHTML = text;
     document.querySelector('.messages').appendChild(message);
     scrollToBottom();
 }
