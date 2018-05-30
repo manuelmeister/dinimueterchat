@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html lang="de_CH">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="models.js"></script>
-    <script src="interactiv.js"></script>
-    <script src="chat.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Title</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="models.js"></script>
+	<script src="interactiv.js"></script>
+	<script src="chat.js"></script>
 </head>
 <body>
 <div class="phone">
-    <main>
-        <div class="title">
-            <h2 class="">Dini Mueter</h2>
-            <a href="about.html" class="info" title="Über diesen Bot" aria-label="Über diesen Bot">i</a>
-        </div>
-        <ul class="messages" itemtype="http://schema.org/Conversation">
-        </ul>
-        <div class="ctrl">
-            <div class="message message-server typing-message">
-                <div class="typing">
-                    <div class="typing-indicator">
-                        <span></span><span></span><span></span>
-                    </div>
-                </div>
-            </div>
-            <div class="buttons">
-                <a href="mailto:jasmine@dinimueter.com" class="chatbutton ">Sorry, es geht nicht, du kannst dich hier bei Jasmine beklagen 😈</a>
-            </div>
-        </div>
-    </main>
+	<main>
+		<a class="topbar">
+			<div class="profileimage">
+				<img src="https://pbs.twimg.com/profile_images/818115493324353536/NE1S2zHZ_400x400.jpg">
+			</div>
+			<div class="metainfo">
+				<h1 class="name">Dini Mueter</h1>
+				<h6 class="lastonline">Zuletzt online: 11:11</h6>
+			</div>
+		</a>
+		<div class="messagewrapper">
+			<ul class="messages" itemtype="http://schema.org/Conversation">
+			</ul>
+			<div class="message message-server typing-message">
+				<div class="typing">
+					<div class="typing-indicator">
+						<span></span><span></span><span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ctrl">
+			<div class="buttons">
+				<a href="mailto:jasmine@dinimueter.com" class="chatbutton ">Sorry, es geht nicht, du kannst dich hier
+					bei Jasmine beklagen 😈</a>
+			</div>
+		</div>
+	</main>
 </div>
 </body>
 <script>
-    init();
+	init();
 </script>
 </html>
