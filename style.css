@@ -74,6 +74,10 @@ ul.messages {
 	border-top-left-radius: 5px;
 }
 
+.aboutsite .message-server {
+	margin-bottom: 15px;
+}
+
 .message-client {
 	margin-left: auto;
 	background: #dcf8c6;
