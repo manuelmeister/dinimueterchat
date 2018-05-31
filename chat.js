@@ -26,9 +26,9 @@ function init() {
             window[callback]();
         }
     } else {
-        let buttonArray = [new Button('Hoi Mami', 0, showWriting.bind(null, wait, mood)),
-            new Button('Hallo Mueter', 0, showWriting.bind(null, wait, mood)),
-            new Button('Sali Mami', 0, showWriting.bind(null, wait, mood)),
+        let buttonArray = [new Button('Hoi Mami', 0, initialClick.bind(null, wait, mood)),
+            new Button('Hallo Mueter', 0, initialClick.bind(null, wait, mood)),
+            new Button('Sali Mami', 0, initialClick.bind(null, wait, mood)),
             new Button('catVideo', 0, festivalAbout)
         ];
         setButtons(buttonArray);

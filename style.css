@@ -82,7 +82,7 @@ ul.messages {
 	margin-bottom: 15px;
 }
 
- .messagewrapper {
+.messagewrapper {
 	padding-bottom: 0;
 }
 
@@ -113,17 +113,19 @@ ul.messages {
 	background: #f5f1ef;
 }
 
-button {
+.button {
 	font-size: 16px;
 	padding: 10px;
 	border: 1px solid #03a9f4;
 	background: #E1F5FE;
 	color: #01579b;
-	margin: 10px;
+	margin: 10px 5px;
 	border-radius: 25px;
 	min-width: 100px;
 	flex-grow: 1;
+	display: inline-block;
 	box-shadow: 0 1px 3px rgba(1, 87, 155, 0.2196078431372549);
+	text-align: center;
 }
 
 .typing-message {
@@ -179,21 +181,27 @@ a {
 @media (min-width: 540px) {
 	body {
 		background: #607D8B;
+		display: flex;
+		height: 100vh;
 	}
 
 	main {
 		height: 100%;
+		position: static;
+		width: 100%;
 	}
 
 	.phone {
 		position: relative;
-		max-width: 420px;
+		max-width: 392px;
+		width: 100%;
 		padding: 80px 20px;
-		margin: 20px auto;
+		margin: auto;
 		background: black;
 		height: calc(100vh - 200px);
 		border-radius: 50px;
 		box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+		max-height: 720px;
 	}
 }
 
@@ -338,4 +346,14 @@ h6 {
 	background: rgba(255, 255, 255, 0.5);
 	border: 2px solid rgba(0,0,0,0.5);
 	color: rgba(0,0,0,0.5);
+}
+
+.welcome {
+	margin: auto 30px;
+	font-size: 22px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.7);
+	box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.1);
 }

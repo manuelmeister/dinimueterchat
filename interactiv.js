@@ -20,12 +20,19 @@ let onlineCheck = setInterval(function () {
 	}
 }, 5000);
 
+function initialClick(duration, callback){
+	scrollToBottom();
+	document.querySelector('.welcome').style.display = 'none';
+	showWriting(duration, callback);
+}
+
 function setButtons(arr, wait = 500) {
 	removeButtons();
 	setTimeout(function () {
 		arr.forEach(function (item) {
 			let button = document.createElement('button');
 			button.classList.add('chatbutton');
+			button.classList.add('button');
 			button.innerHTML = item.text;
 			button.addEventListener('click', function () {
 				addMessage(item.text, 'client');
@@ -70,7 +77,9 @@ function showWriting(duration, callback) {
 	if (document.querySelector('.lastonline').innerText === 'online') {
 		showTyping(duration, callback);
 	} else {
+		scrollToBottom();
 		setTimeout(function () {
+			scrollToBottom();
 			document.querySelector('.lastonline').innerText = 'online';
 			setTimeout(function () {
 				showTyping(duration, callback);
