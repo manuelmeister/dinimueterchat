@@ -28,7 +28,7 @@ function init() {
     } else {
         let buttonArray = [new Button('Hoi Mami', 0, initialClick.bind(null, wait, mood)),
             new Button('Hallo Mueter', 0, initialClick.bind(null, wait, mood)),
-            new Button('Sali Mami', 0, initialClick.bind(null, wait, mood)),
+            new Button('Sälü Mami', 0, initialClick.bind(null, wait, mood)),
             new Button('catVideo', 0, festivalAbout)
         ];
         setButtons(buttonArray);
