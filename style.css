@@ -2,11 +2,12 @@ html, body {
 	font-size: 16px;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 }
 
 body {
-	background: #fff;
+	background: #f5f1ef;
 }
 
 .title {
@@ -21,8 +22,11 @@ main {
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	background: #ded5cd;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100vw;
 }
 
 .messagewrapper {
@@ -103,7 +107,7 @@ ul.messages {
 .buttons {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 10px 20px 10px;
+	padding: 10px;
 	border-top: 1px solid hsla(0, 0%, 0%, 0.2);
 	box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.05);
 	background: #f5f1ef;
@@ -165,6 +169,13 @@ a {
 	margin-bottom: 10px;
 }
 
+.phone {
+	padding: 0;
+	margin: 0;
+	display: block;
+	position: fixed;
+}
+
 @media (min-width: 540px) {
 	body {
 		background: #607D8B;
@@ -175,6 +186,7 @@ a {
 	}
 
 	.phone {
+		position: relative;
 		max-width: 420px;
 		padding: 80px 20px;
 		margin: 20px auto;

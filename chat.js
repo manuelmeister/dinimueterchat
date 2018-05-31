@@ -22,6 +22,7 @@ function init() {
             impact = i;
         }
         if(callback !== ''){
+            removeButtons();
             window[callback]();
         }
     } else {
