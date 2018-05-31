@@ -1,4 +1,4 @@
-let wait = 20;
+let wait = 1500;
 
 //from: https://stackoverflow.com/questions/5448545/how-to-retrieve-get-parameters-from-javascript
 function findGetParameter(parameterName) {
