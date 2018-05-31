@@ -78,6 +78,10 @@ ul.messages {
 	margin-bottom: 15px;
 }
 
+.aboutsite .messagewrapper {
+	padding-bottom: 0;
+}
+
 .message-client {
 	margin-left: auto;
 	background: #dcf8c6;
@@ -131,18 +135,17 @@ a {
 
 .info {
 	text-decoration: none;
-	border: 1px solid #2196f3;
-	background: #E3F2FD;
+	border: 2px solid rgba(0, 0, 0, 0.1);
 	padding: 5px;
-	margin: 25px;
-	font-weight: bold;
-	width: 16px;
-	height: 16px;
-	display: block;
+	color: rgba(0, 0, 0, 0.2);
+	width: 48px;
+	height: 48px;
+	display: flex;
 	border-radius: 100%;
-	position: absolute;
-	top: 0;
-	right: 0;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
 }
 
 .back {
@@ -295,6 +298,7 @@ TYPING INDICATOR
 	display: flex;
 	flex-direction: column;
 	color: black;
+	flex-grow: 1;
 }
 
 h1,h6 {
@@ -316,4 +320,10 @@ h6 {
 
 .aboutsite p {
 	margin: 0 0 5px;
+}
+
+.info:hover {
+	background: rgba(255, 255, 255, 0.5);
+	border: 2px solid rgba(0,0,0,0.5);
+	color: rgba(0,0,0,0.5);
 }

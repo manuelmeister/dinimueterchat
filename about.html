@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body class="aboutsite">
 <div class="phone">
 	<main>
 		<a class="topbar" href="index.html">
@@ -16,8 +16,11 @@
 				<h6>Version 1.0</h6>
 			</div>
 		</a>
+		<script>
+			document.querySelector('.topbar').href = '/index.html'+ window.location.search;
+		</script>
 		<div class="messagewrapper">
-			<ul class="messages aboutsite" itemtype="http://schema.org/Conversation">
+			<ul class="messages" itemtype="http://schema.org/Conversation">
 				<li itemscope="" itemprop="hasPart" itemtype="http://schema.org/Message" class="message message-client">
 					Was ist das?
 				</li>

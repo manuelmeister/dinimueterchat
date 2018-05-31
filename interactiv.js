@@ -88,6 +88,7 @@ function showTyping(duration, callback) {
 		document.querySelector('.lastonline').innerText = 'online';
 		callback();
 		scrollToBottom();
+		document.querySelector('.topbar').href = '/about.html?m=' + callback.name + '&i=' + impact;
 	}, duration);
 	scrollToBottom();
 }
