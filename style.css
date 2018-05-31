@@ -27,7 +27,7 @@ main {
 
 .messagewrapper {
 	flex-grow: 1;
-	padding: 0 0 20px;
+	padding: 0;
 	display: flex;
 	flex-direction: column;
 }
@@ -78,7 +78,7 @@ ul.messages {
 	margin-bottom: 15px;
 }
 
-.aboutsite .messagewrapper {
+ .messagewrapper {
 	padding-bottom: 0;
 }
 
