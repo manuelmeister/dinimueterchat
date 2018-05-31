@@ -1,13 +1,37 @@
 let wait = 1500;
 
+//from: https://stackoverflow.com/questions/5448545/how-to-retrieve-get-parameters-from-javascript
+function findGetParameter(parameterName) {
+	let result = null,
+		tmp = [];
+	let items = location.search.substr(1).split("&");
+	for (let index = 0; index < items.length; index++) {
+		tmp = items[index].split("=");
+		if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+	}
+	return result;
+}
+//from: https://stackoverflow.com/questions/1303646/check-whether-variable-is-number-or-string-in-javascript
+function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 
 function init() {
-    let buttonArray = [new Button('Hoi Mami', 0, showWriting.bind(null, wait, mood)),
-        new Button('Hallo Mueter', 0, showWriting.bind(null, wait, mood)),
-        new Button('Sali Mami', 0, showWriting.bind(null, wait, mood)),
-        new Button('catVideo', 0, festivalAbout)
-    ];
-    setButtons(buttonArray);
+    if(window.location.search !== ''){
+        let callback = findGetParameter('m');
+        let i = findGetParameter('i');
+        if(isNumber(i)){
+            impact = i;
+        }
+        if(callback !== ''){
+            window[callback]();
+        }
+    } else {
+        let buttonArray = [new Button('Hoi Mami', 0, showWriting.bind(null, wait, mood)),
+            new Button('Hallo Mueter', 0, showWriting.bind(null, wait, mood)),
+            new Button('Sali Mami', 0, showWriting.bind(null, wait, mood)),
+            new Button('catVideo', 0, festivalAbout)
+        ];
+        setButtons(buttonArray);
+    }
 }
 
 /// Wie geht es dir? Moodcheck
@@ -30,9 +54,9 @@ function moodHappy() {
 function moodUnhappy() {
     let buttonArray = [new Button('Nein, das ist es nicht...', 0, festivalQuestion)];
     addMessage('Ojeh :((', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function moodUnhappy() {
         addMessage('Was ist los??', 'server');
-        showWriting(wait, function () {
+        showWriting(wait, function moodUnhappy() {
             setButtons(buttonArray);
             addMessage('Bist du krank??', 'server');
         })
@@ -62,9 +86,9 @@ function festivalAnswer() {
     
     
     addMessage('Achso, darum geht es also.', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function festivalAnswer() {
         addMessage('Ist ja klar, sonst schreibst du mir ja nie', 'server');
-        showWriting(wait, function () {
+        showWriting(wait, function festivalAnswer() {
             setButtons(buttonArray);
             addMessage('Bei mir wächst das Geld auch nicht auf den Bäumen!', 'server');
         })
@@ -74,7 +98,7 @@ function festivalAnswer() {
 
 function festivalAnswerNice() {
     addMessage('Ich verstehe dich ja.. Aber es macht mich trotzdem traurig :(', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function festivalAnswerNice() {
         catVideo();
     })
 }
@@ -86,14 +110,14 @@ function festivalAnswerNeutral() {
 
 function festivalAnswerNeutral2() {
     addMessage('Das war vor 3 Monaten', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function festivalAnswerNeutral2() {
         catVideo();
     })
 }
 
 function festivalAnswerNegative() {
     addMessage('Ich bin doch keine Dramaqueen! Aber wenn ich meinem Kind scheinbar nicht mehr wichtig bin....', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function festivalAnswerNegative() {
         catVideo();
     })
 }
@@ -110,21 +134,21 @@ function catVideo() {
 
 function catVideoAnswerNice() {
     addMessage('Nicht wahr??', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function catVideoAnswerNice() {
         sendCatVideo();
     })
 }
 
 function catVideoAnswerNegative() {
     addMessage('Die sind doch super!', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function catVideoAnswerNegative() {
         sendCatVideo();
     })
 }
 
 function catVideoAnswerNeutral() {
     addMessage('Jetzt bist du ja online.', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function catVideoAnswerNeutral() {
         sendCatVideo();
     })
 }
@@ -135,7 +159,7 @@ function sendCatVideo() {
         new Button('Haha, jaja.', 0, showWriting.bind(null, wait, sendCatVideoAnswerNeutral))];
     
     addMessage('Schau mal<br><br><div class="aspect-ratio"><iframe src="https://giphy.com/embed/3oriO0OEd9QIDdllqo" width="480" height="477" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function sendCatVideo() {
         addMessage('Die ist doch megasüss!', 'server');
         setButtons(buttonArray);
     })
@@ -144,21 +168,21 @@ function sendCatVideo() {
 
 function sendCatVideoAnswerNice() {
     addMessage('Sag ich ja immer :)', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function sendCatVideoAnswerNice() {
         festivalAbout()
     })
 }
 
 function sendCatVideoAnswerNeutral() {
     addMessage('Was jaja? Katzen sind super.', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function sendCatVideoAnswerNeutral() {
         festivalAbout()
     })
 }
 
 function sendCatVideoAnswerNegative() {
     addMessage('Du bist so herzlos.', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function sendCatVideoAnswerNegative() {
         festivalAbout()
     })
 }
@@ -177,7 +201,7 @@ function festivalAbout() {
 
 function festivalAboutNice() {
     addMessage('Hmm.. Klingt gar nicht so schlecht :)', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function festivalAboutNice() {
         festivalWhen()
     })
 }
@@ -190,7 +214,7 @@ function festivalAboutNeutral() {
 
 function festivalAboutNeutral2() {
     addMessage('Kein "Mami..."! Du weisst doch, dass ich recht habe.', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function festivalAboutNeutral2() {
         festivalWhen()
     })
 }
@@ -198,7 +222,7 @@ function festivalAboutNeutral2() {
 
 function festivalAboutNegative() {
     addMessage('Wow, bist du heute mit dem falschen Fuss aufgestanden?', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function festivalAboutNegative() {
         festivalNegativeAnswer()
     })
 }
@@ -213,14 +237,14 @@ function festivalNegativeAnswer() {
 
 function festivalAboutAnswerNice() {
     addMessage('Schon ok, das verstehe ich.', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function festivalAboutAnswerNice() {
         festivalWhen()
     })
 }
 
 function festivalAboutAnswerNegative() {
     addMessage(':(', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function festivalAboutAnswerNegative() {
         festivalWhen()
     })
 }
@@ -238,8 +262,8 @@ function festivalWhen() {
 
 
 function festivalWhenNice() {
-    addMessage('Aber dann ist doch Tante Esthers Geburtstag!'+impact, 'server');
-    showWriting(wait, function () {
+    addMessage('Aber dann ist doch Tante Esthers Geburtstag!', 'server');
+    showWriting(wait, function festivalWhenNice() {
         birthdayAttend()
     })
 }
@@ -270,7 +294,7 @@ function birthdayAttend() {
 
 function birthdayAttendNice() {
     addMessage('Aber dann ist doch Tante Esthers Geburtstag!', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function birthdayAttendNice() {
         festivalWhen()
     })
 }
@@ -300,9 +324,9 @@ function birthdayAttendNegative() {
 
 function endGood() {
     addMessage('Also... ', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function endGood() {
         addMessage('Die ist doch megasüss!', 'server');
-        showWriting(wait, function () {
+        showWriting(wait, function endGood() {
             addMessage('Die ist doch megasüss!', 'server');
         })
     })
@@ -310,9 +334,9 @@ function endGood() {
 
 function endNeutral() {
     addMessage('Also... ', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function endNeutral() {
         addMessage('Die ist doch megasüss!', 'server');
-        showWriting(wait, function () {
+        showWriting(wait, function endNeutral() {
             addMessage('Die ist doch megasüss!', 'server');
         })
     })
@@ -320,9 +344,9 @@ function endNeutral() {
 
 function endBad() {
     addMessage('Also... ', 'server');
-    showWriting(wait, function () {
+    showWriting(wait, function endBad() {
         addMessage('Die ist doch megasüss!', 'server');
-        showWriting(wait, function () {
+        showWriting(wait, function endBad() {
             addMessage('Die ist doch megasüss!', 'server');
         })
     })
