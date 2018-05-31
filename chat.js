@@ -1,4 +1,4 @@
-let wait = 20;
+let wait = 1500;
 
 
 function init() {
@@ -238,7 +238,7 @@ function festivalWhen() {
 
 
 function festivalWhenNice() {
-    addMessage('Aber dann ist doch Tante Esthers Geburtstag!', 'server');
+    addMessage('Aber dann ist doch Tante Esthers Geburtstag!'+impact, 'server');
     showWriting(wait, function () {
         birthdayAttend()
     })
