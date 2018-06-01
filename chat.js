@@ -28,7 +28,7 @@ function init() {
         let buttonArray = [new Button('Hoi Mami', 0, showWriting.bind(null, wait, mood)),
             new Button('Hallo Mueter', 0, showWriting.bind(null, wait, mood)),
             new Button('Sali Mami', 0, showWriting.bind(null, wait, mood)),
-            new Button('catVideo', 0, festivalAbout)
+            new Button('catVideo', 0, festivalBother)
         ];
         setButtons(buttonArray);
     }
@@ -288,28 +288,41 @@ function birthdayAttend() {
 	let buttonArray = [new Button('Na klar! Ich freue mich bereits auf das Grillfest :)', 1, showWriting.bind(null, wait, birthdayAttendNice)),
 						new Button('Ich bin noch nicht ganz sicher..', 0, showWriting.bind(null, wait, birthdayAttendNeutral)),
 						new Button('Warum sollte ich? Die mochte ich eh nie.', -1, showWriting.bind(null, wait, birthdayAttendNegative))]
-	setButtons();
+	setButtons(buttonArray);
     addMessage('Da kommst du doch, oder?', 'server');
 }
 
+
 function birthdayAttendNice() {
-    addMessage('Aber dann ist doch Tante Esthers Geburtstag!', 'server');
+    addMessage('Und ich freue mich so auf dich!', 'server');
     showWriting(wait, function birthdayAttendNice() {
-        festivalWhen()
+    	addMessage('Ach ja! Ich wollte dich noch fragen..', 'server');
+    	showWriting(wait, function birthdayAttendNice() {
+        	birthdayKitchenAttend()
+        })
     })
+    
 }
 
 function birthdayAttendNeutral() {
-    let buttonArray = [new Button('ok, ok. Es ist im Juli', 0, showWriting.bind(null, wait, festivalWhenNegative2))]
-    addMessage('Warum bist du so frech zu mir? Du willst schliesslich etwas von mir..', 'server');
-    setButtons(buttonArray)
+    addMessage('Ich würde mich so freuen, wenn du kommen würdest!', 'server');
+    showWriting(wait, function birthdayAttendNeutral() {
+    	addMessage('Es gibt wieder ein Grillfest, und...', 'server');
+    	showWriting(wait, function birthdayAttendNeutral() {
+        	birthdayKitchenAttend()
+        })
+    })
     
 }
 
 function birthdayAttendNegative() {
-    let buttonArray = [new Button('Mitte', 0, showWriting.bind(null, wait, festivalAboutNeutral2))]
-    addMessage('Wann im Juli? Lass dir doch nicht alles aus der Nase ziehen.', 'server');
-    setButtons(buttonArray)
+    addMessage('Jetzt tu doch nicht so!', 'server');
+    showWriting(wait, function birthdayAttendNegative() {
+    	addMessage('Wir organisieren wie jedes Jahr ein Grillfest', 'server');
+    	showWriting(wait, function birthdayAttendNegative() {
+        	birthdayKitchenAttend()
+        })
+    })
     
 }
 
@@ -317,37 +330,160 @@ function birthdayAttendNegative() {
 
 
 
+/// Kitchen Help
 
+function birthdayKitchenAttend() {
+	let buttonArray = [new Button('Ich helfe gerne!', 1, showWriting.bind(null, wait, birthdayKitchenAttendNice)),
+						new Button('Hmm.. Mal schauen, ob ich Zeit habe.', 0, showWriting.bind(null, wait, birthdayKitchenAttendNeutral)),
+						new Button('Wenns UNBEDINGT sein muss.', -1, showWriting.bind(null, wait, birthdayKitchenAttendNegative))]
+	setButtons(buttonArray);
+    addMessage('Ich bräuchte noch Hilfe in der Küche...', 'server');
+}
+
+
+
+
+function birthdayKitchenAttendNice() {
+    addMessage('Danke dir vielmals!', 'server');
+    showWriting(wait, function birthdayKitchenAttendNice() {
+    	addMessage('💐', 'server');
+    	festivalBother()
+    })
+    
+}
+
+function birthdayKitchenAttendNeutral() {
+    addMessage('Das wäre so toll!', 'server');
+    festivalBother()
+    
+}
+
+function birthdayKitchenAttendNegative() {
+    addMessage('Es wäre schön, wenn du etwas mehr zeigen würdest, dass dir etwas an deiner Familie liegt.', 'server');
+    showWriting(wait, function birthdayKitchenAttendNegative() {
+    	addMessage('Aber es liegt an dir...', 'server');
+        festivalBother()
+    })
+    
+}
+
+
+
+// Festival BOTHER THE MOTHER
+
+
+function festivalBother() {
+	let buttonArray = [new Button('Also, wegen diesem Festival...', 0, showWriting.bind(null, wait, festivalBotherNice)),
+						new Button('Was ist jetzt mit dem Geld fürs Festival?', -1, showWriting.bind(null, wait, festivalBotherNegative))]
+	setButtons(buttonArray);
+}
+
+
+function festivalBotherNice() {
+    addMessage('Ach ja...', 'server');
+    cashMoney()
+}
+
+function festivalBotherNegative() {
+	let buttonArray = [new Button('Das stimmt doch jetzt nicht so...', 0,  festivalBotherNegative2)]
+    addMessage('Dir gehts auch immer nur um das eine!', 'server');
+    showWriting(wait, function festivalBotherNegative() {
+    	addMessage('Ich habe das Gefühl, du schätzt mich als Mutter nicht', 'server');
+        showWriting(wait, function festivalBotherNegative() {
+    		addMessage('Nur als Brieftasche...', 'server');
+        	setButtons(buttonArray)
+    	})
+    })
+    
+}
+
+
+
+// cash Money DOLLABILLZ
+
+
+function cashMoney() {
+	let buttonArray = [new Button('250.-, fürs Ticket und Zugbillet', 1, showWriting.bind(null, wait, cashMoneyNice)),
+	new Button('So viel wie möglich, ich will ja auch leben..', -1, showWriting.bind(null, wait, cashMoneyNegative))]
+   
+    showWriting(wait, function festivalBotherNegative() {
+    	addMessage('Wie viel brauchst du denn?', 'server');
+    	setButtons(buttonArray);
+  	});
+    
+}
+
+
+function cashMoneyNice() {
+	let buttonArray = [new Button('Wow, danke dir! :)', 0, decision)]
+   	addMessage('Hmm.. Aber leben musst du dort ja auch noch, oder?', 'server');
+    showWriting(wait, function cashMoneyNice() {
+    	addMessage('Dann wären es sicher 350, mit Essen und so.', 'server');
+    	setButtons(buttonArray);
+  	});
+    
+}
+
+
+function cashMoneyNegative() {
+	let buttonArray = [new Button('Ja, vielleicht...', 0, decision)]
+   	addMessage('Dann beginne doch, dein eigenes Geld zu verdienen!', 'server');
+    showWriting(wait, function cashMoneyNegative() {
+    	addMessage('Ich denke 300.- müssten reichen, oder?', 'server');
+    	setButtons(buttonArray);
+  	});
+    
+}
 
 // ENDINGS
 
 
+function decision() {
+	if(impact > 2){
+		endGood()
+	} else if(impact < 0){
+		endBad()
+	} else {
+		endNeutral()
+	}
+}
+
+
 function endGood() {
-    addMessage('Also... ', 'server');
-    showWriting(wait, function endGood() {
-        addMessage('Die ist doch megasüss!', 'server');
-        showWriting(wait, function endGood() {
-            addMessage('Die ist doch megasüss!', 'server');
-        })
-    })
+	showWriting(wait, function endGood() {
+	    addMessage('Also... ', 'server');
+	    showWriting(wait, function endGood() {
+	        addMessage('Du machst so viel für mich in letzter Zeit, ich finde, du hast dir ein kleines "Goodie" verdient :)', 'server');
+	        showWriting(wait, function endGood() {
+	            addMessage('Ich wünsche dir ganz viel Spass am Festival mein Schatz!', 'server');
+	        })
+	    })
+	})
 }
 
 function endNeutral() {
-    addMessage('Also... ', 'server');
     showWriting(wait, function endNeutral() {
-        addMessage('Die ist doch megasüss!', 'server');
-        showWriting(wait, function endNeutral() {
-            addMessage('Die ist doch megasüss!', 'server');
-        })
-    })
+	    addMessage('Also... ', 'server');
+	    showWriting(wait, function endNeutral() {
+	        addMessage('Von mir aus kannst du das Geld haben.', 'server');
+	        showWriting(wait, function endNeutral() {
+	            addMessage('Aber du wirst dafür arbeiten müssen!', 'server');
+	            showWriting(wait, function endNeutral() {
+	            	addMessage('Du kommst nächste Woche jeden Abend vorbei und hilfst mir im Garten. Dann haben wir einen Deal.', 'server');
+	        	})
+	        })
+	    })
+	})
 }
 
 function endBad() {
-    addMessage('Also... ', 'server');
     showWriting(wait, function endBad() {
-        addMessage('Die ist doch megasüss!', 'server');
-        showWriting(wait, function endBad() {
-            addMessage('Die ist doch megasüss!', 'server');
-        })
-    })
+	    addMessage('Also... ', 'server');
+	    showWriting(wait, function endBad() {
+	        addMessage('Du warst so unhöflich mit mir in letzter Zeit.', 'server');
+	        showWriting(wait, function endBad() {
+	            addMessage('Von mir bekommst du keinen Rappen! Sieh doch selbst zu, wie du zu deinem Geld kommst.', 'server');
+	        })
+	    })
+	})
 }
