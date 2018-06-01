@@ -57,6 +57,7 @@ function removeButtons() {
 function addMessage(text, source = 'server') {
 	if (source === 'server') {
 		idleTimeLeft = 20;
+		document.querySelector('.welcome').style.display = 'none';
 	}
 	let message = document.createElement('li');
 	message.setAttribute('itemscope', '');

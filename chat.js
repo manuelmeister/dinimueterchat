@@ -456,9 +456,17 @@ function endGood() {
 	        addMessage('Du machst so viel für mich in letzter Zeit, ich finde, du hast dir ein kleines "Goodie" verdient :)', 'server');
 	        showWriting(wait, function endGood() {
 	            addMessage('Ich wünsche dir ganz viel Spass am Festival mein Schatz!', 'server');
+				showWriting(wait, function endGood() {
+					showWin();
+				})
 	        })
 	    })
 	})
+}
+
+function showWin() {
+    document.querySelector('.winscreen').style.display = 'flex';
+    document.querySelector('#canvas').style.display = 'block';
 }
 
 function endNeutral() {
@@ -470,6 +478,9 @@ function endNeutral() {
 	            addMessage('Aber du wirst dafür arbeiten müssen!', 'server');
 	            showWriting(wait, function endNeutral() {
 	            	addMessage('Du kommst nächste Woche jeden Abend vorbei und hilfst mir im Garten. Dann haben wir einen Deal.', 'server');
+	            	showWriting(wait, function endNeutral() {
+                        showWin();
+					})
 	        	})
 	        })
 	    })
