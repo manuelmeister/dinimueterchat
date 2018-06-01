@@ -2,11 +2,12 @@ html, body {
 	font-size: 16px;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 }
 
 body {
-	background: #fff;
+	background: #f5f1ef;
 }
 
 .title {
@@ -21,13 +22,16 @@ main {
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	background: #ded5cd;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 100vw;
 }
 
 .messagewrapper {
 	flex-grow: 1;
-	padding: 0 0 20px;
+	padding: 0;
 	display: flex;
 	flex-direction: column;
 }
@@ -78,7 +82,7 @@ ul.messages {
 	margin-bottom: 15px;
 }
 
-.aboutsite .messagewrapper {
+.messagewrapper {
 	padding-bottom: 0;
 }
 
@@ -103,23 +107,25 @@ ul.messages {
 .buttons {
 	display: flex;
 	flex-wrap: wrap;
-	padding: 10px 20px 10px;
+	padding: 10px;
 	border-top: 1px solid hsla(0, 0%, 0%, 0.2);
 	box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.05);
 	background: #f5f1ef;
 }
 
-button {
+.button {
 	font-size: 16px;
 	padding: 10px;
 	border: 1px solid #03a9f4;
 	background: #E1F5FE;
 	color: #01579b;
-	margin: 10px;
+	margin: 10px 5px;
 	border-radius: 25px;
 	min-width: 100px;
 	flex-grow: 1;
+	display: inline-block;
 	box-shadow: 0 1px 3px rgba(1, 87, 155, 0.2196078431372549);
+	text-align: center;
 }
 
 .typing-message {
@@ -165,23 +171,37 @@ a {
 	margin-bottom: 10px;
 }
 
+.phone {
+	padding: 0;
+	margin: 0;
+	display: block;
+	position: fixed;
+}
+
 @media (min-width: 540px) {
 	body {
 		background: #607D8B;
+		display: flex;
+		height: 100vh;
 	}
 
 	main {
 		height: 100%;
+		position: static;
+		width: 100%;
 	}
 
 	.phone {
-		max-width: 420px;
+		position: relative;
+		max-width: 392px;
+		width: 100%;
 		padding: 80px 20px;
-		margin: 20px auto;
+		margin: auto;
 		background: black;
 		height: calc(100vh - 200px);
 		border-radius: 50px;
 		box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+		max-height: 720px;
 	}
 }
 
@@ -326,4 +346,14 @@ h6 {
 	background: rgba(255, 255, 255, 0.5);
 	border: 2px solid rgba(0,0,0,0.5);
 	color: rgba(0,0,0,0.5);
+}
+
+.welcome {
+	margin: auto 30px;
+	font-size: 22px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.7);
+	box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.1);
 }

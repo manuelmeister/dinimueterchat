@@ -2,7 +2,9 @@
 <html lang="de_CH">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, viewport-fit=cover'">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<title>Dini Mueter | Bot</title>
 	<link rel="stylesheet" href="style.css">
 	<script src="models.js"></script>
@@ -10,39 +12,41 @@
 	<script src="chat.js"></script>
 </head>
 <body class="botsite">
-<div class="phone">
-	<main>
-		<a href="about.html" class="topbar">
-			<div class="profileimage">
-				<img src="/profil.jpg">
-			</div>
-			<div class="metainfo">
-				<h1 class="name">Dini Mueter</h1>
-				<h6 class="lastonline">Zuletzt online: gestern 13:37</h6>
-			</div>
-			<div class="info">
-				Info
-			</div>
-		</a>
-		<div class="messagewrapper">
-			<ul class="messages" itemtype="http://schema.org/Conversation">
-			</ul>
-			<div class="message message-server typing-message">
-				<div class="typing">
-					<div class="typing-indicator">
-						<span></span><span></span><span></span>
+	<div class="phone">
+		<main>
+			<a href="about.html" class="topbar">
+				<div class="profileimage">
+					<img src="/profil.jpg">
+				</div>
+				<div class="metainfo">
+					<h1 class="name">Dini Mueter</h1>
+					<h6 class="lastonline">Zuletzt online: gestern 13:37</h6>
+				</div>
+				<div class="info">
+					Info
+				</div>
+			</a>
+			<div class="messagewrapper">
+				<div role="banner" class="welcome">Du musst versuchen deine Mutter zu überzeugen, dir Geld für ein Festival zu geben. Sei nett zu ihr, und deine Chancen stehen gut!</div>
+				<ul class="messages" itemtype="http://schema.org/Conversation">
+				</ul>
+				<div class="message message-server typing-message">
+					<div class="typing">
+						<div class="typing-indicator">
+							<span></span><span></span><span></span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="ctrl">
-			<div class="buttons">
-				<a href="mailto:jasmine@dinimueter.com" class="chatbutton ">Sorry, es geht nicht, du kannst dich hier
-					bei Jasmine beklagen 😈</a>
+			<div class="ctrl">
+				<div class="buttons">
+					<a href="mailto:jasmine@dinimueter.com" class="chatbutton ">Sorry, es geht nicht, du kannst dich
+						hier
+						bei Jasmine beklagen 😈</a>
+				</div>
 			</div>
-		</div>
-	</main>
-</div>
+		</main>
+	</div>
 </body>
 <script>
 	init();
