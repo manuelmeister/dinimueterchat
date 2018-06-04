@@ -1,11 +1,11 @@
-let wait = 1500;
+var wait = 1500;
 
 //from: https://stackoverflow.com/questions/5448545/how-to-retrieve-get-parameters-from-javascript
 function findGetParameter(parameterName) {
-	let result = null,
+	var result = null,
 		tmp = [];
-	let items = location.search.substr(1).split("&");
-	for (let index = 0; index < items.length; index++) {
+	var items = location.search.substr(1).split("&");
+	for (var index = 0; index < items.length; index++) {
 		tmp = items[index].split("=");
 		if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
 	}
@@ -16,8 +16,8 @@ function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 
 function init() {
     if(window.location.search !== ''){
-        let callback = findGetParameter('m');
-        let i = findGetParameter('i');
+        var callback = findGetParameter('m');
+        var i = findGetParameter('i');
         if(isNumber(i)){
             impact = i;
         }
@@ -26,7 +26,7 @@ function init() {
             window[callback]();
         }
     } else {
-        let buttonArray = [new Button('Hoi Mami', 0, initialClick.bind(null, wait, mood)),
+        var buttonArray = [new Button('Hoi Mami', 0, initialClick.bind(null, wait, mood)),
             new Button('Hallo Mueter', 0, initialClick.bind(null, wait, mood)),
             new Button('Sälü Mami', 0, initialClick.bind(null, wait, mood)),
         ];
@@ -37,7 +37,7 @@ function init() {
 /// Wie geht es dir? Moodcheck
 
 function mood() {
-    let buttonArray = [new Button('Ganz gut! :)', 0, showWriting.bind(null, wait, moodHappy)),
+    var buttonArray = [new Button('Ganz gut! :)', 0, showWriting.bind(null, wait, moodHappy)),
         new Button('Nicht so gut :(', 0, showWriting.bind(null, wait, moodUnhappy)),
         new Button('Solala', 0, showWriting.bind(null, wait, moodSolala))];
     setButtons(buttonArray);
@@ -46,13 +46,13 @@ function mood() {
 
 
 function moodHappy() {
-    let buttonArray = [new Button(':)', 0, festivalQuestion)];
+    var buttonArray = [new Button(':)', 0, festivalQuestion)];
     setButtons(buttonArray);
     addMessage('Das freut mich aber!', 'server');
 }
 
 function moodUnhappy() {
-    let buttonArray = [new Button('Nein, das ist es nicht...', 0, festivalQuestion)];
+    var buttonArray = [new Button('Nein, das ist es nicht...', 0, festivalQuestion)];
     addMessage('Ojeh :((', 'server');
     showWriting(wait, function moodUnhappy() {
         addMessage('Was ist los??', 'server');
@@ -64,7 +64,7 @@ function moodUnhappy() {
 }
 
 function moodSolala() {
-    let buttonArray = [new Button('Ganz gut! :)', 0, showWriting.bind(null, wait, moodHappy)),
+    var buttonArray = [new Button('Ganz gut! :)', 0, showWriting.bind(null, wait, moodHappy)),
         new Button('Nicht so gut :(', 0, showWriting.bind(null, wait, moodUnhappy))];
     setButtons(buttonArray);
     addMessage('Solala gibt’s nicht. Sag schon!', 'server');
@@ -74,13 +74,13 @@ function moodSolala() {
 // Festival frage - mamiii derfi?
 
 function festivalQuestion() {
-    let buttonArray = [new Button('Ich hab dir doch von diesem Festival erzählt...', 0, showWriting.bind(null, wait, festivalAnswer))];
+    var buttonArray = [new Button('Ich hab dir doch von diesem Festival erzählt...', 0, showWriting.bind(null, wait, festivalAnswer))];
     setButtons(buttonArray);
 }
 
 
 function festivalAnswer() {
-    let buttonArray = [new Button('Tut mir leid.. Die Zeit vergeht viel zu schnell!', 1, showWriting.bind(null, wait, festivalAnswerNice)),
+    var buttonArray = [new Button('Tut mir leid.. Die Zeit vergeht viel zu schnell!', 1, showWriting.bind(null, wait, festivalAnswerNice)),
         new Button('Ich schreibe dir auch sonst immer!', 0, festivalAnswerNeutral),
         new Button('Jetzt spiel nicht die Dramaqueen.', -1, showWriting.bind(null, wait, festivalAnswerNegative))];
     
@@ -104,7 +104,7 @@ function festivalAnswerNice() {
 }
 
 function festivalAnswerNeutral() {
-    let buttonArray = [new Button('An deinem Geburtstag zum Beispiel, weißt du nicht mehr?', 0, showWriting.bind(null, wait, festivalAnswerNeutral2))];
+    var buttonArray = [new Button('An deinem Geburtstag zum Beispiel, weißt du nicht mehr?', 0, showWriting.bind(null, wait, festivalAnswerNeutral2))];
     setButtons(buttonArray);
 }
 
@@ -125,7 +125,7 @@ function festivalAnswerNegative() {
 // catvideo
 
 function catVideo() {
-    let buttonArray = [new Button('Ach, die mit den süssen Katzen? Ich liebe die!', 1, showWriting.bind(null, wait, catVideoAnswerNice)),
+    var buttonArray = [new Button('Ach, die mit den süssen Katzen? Ich liebe die!', 1, showWriting.bind(null, wait, catVideoAnswerNice)),
         new Button('Du weißt doch, dass ich die blöde finde.', -1, showWriting.bind(null, wait, catVideoAnswerNegative)),
         new Button('Ich vergesse manchmal, zu Antworten. Sorry!', 0, showWriting.bind(null, wait, catVideoAnswerNeutral))];
     setButtons(buttonArray);
@@ -154,7 +154,7 @@ function catVideoAnswerNeutral() {
 }
 
 function sendCatVideo() {
-    let buttonArray = [new Button('Die ist wirklich zuckersüss.', 1, showWriting.bind(null, wait, sendCatVideoAnswerNice)),
+    var buttonArray = [new Button('Die ist wirklich zuckersüss.', 1, showWriting.bind(null, wait, sendCatVideoAnswerNice)),
         new Button('Ugh. Unnötig.', -1, showWriting.bind(null, wait, sendCatVideoAnswerNegative)),
         new Button('Haha, jaja.', 0, showWriting.bind(null, wait, sendCatVideoAnswerNeutral))];
     
@@ -191,7 +191,7 @@ function sendCatVideoAnswerNegative() {
 // Festival what? Festival ONE
 
 function festivalAbout() {
-    let buttonArray = [new Button('Es ist ein Musik-Festival. Ich kann da ganz viel lernen über Popkultur und Soziale Formen..', 1, showWriting.bind(null, wait, festivalAboutNice)),
+    var buttonArray = [new Button('Es ist ein Musik-Festival. Ich kann da ganz viel lernen über Popkultur und Soziale Formen..', 1, showWriting.bind(null, wait, festivalAboutNice)),
         new Button('Tu doch nicht so. Du weißt, was ein Festival ist.', -1, showWriting.bind(null, wait, festivalAboutNegative)),
         new Button('Es kommen supercoole Bands, und alle meine Freunde gehen hin!', 0, showWriting.bind(null, wait, festivalAboutNeutral))];
     setButtons(buttonArray);
@@ -207,7 +207,7 @@ function festivalAboutNice() {
 }
 
 function festivalAboutNeutral() {
-    let buttonArray = [new Button('Mami..', 0, showWriting.bind(null, wait, festivalAboutNeutral2))]
+    var buttonArray = [new Button('Mami..', 0, showWriting.bind(null, wait, festivalAboutNeutral2))]
     addMessage('Wenn alle deine Freunde aus dem Fenster springen, tust du das auch?', 'server');
     setButtons(buttonArray)
 }
@@ -229,7 +229,7 @@ function festivalAboutNegative() {
 
 
 function festivalNegativeAnswer() {
-    let buttonArray = [new Button('Sorry :( Hatte einen strengen Tag.', 1, showWriting.bind(null, wait, festivalAboutAnswerNice)),
+    var buttonArray = [new Button('Sorry :( Hatte einen strengen Tag.', 1, showWriting.bind(null, wait, festivalAboutAnswerNice)),
         new Button('🙄', -1, showWriting.bind(null, wait, festivalAboutAnswerNegative))];
     setButtons(buttonArray);
     addMessage('Das finde ich nicht nett von dir :(', 'server');
@@ -253,7 +253,7 @@ function festivalAboutAnswerNegative() {
 // Wann ist denn das Festival? Festival TWO
 
 function festivalWhen() {
-    let buttonArray = [new Button('Mitte Juli', 1, showWriting.bind(null, wait, festivalWhenNice)),
+    var buttonArray = [new Button('Mitte Juli', 1, showWriting.bind(null, wait, festivalWhenNice)),
         new Button('Kann dir doch egal sein.', -1, showWriting.bind(null, wait, festivalWhenNegative))]
     setButtons(buttonArray);
     addMessage('Wann ist denn dieses Festival?', 'server');
@@ -269,14 +269,14 @@ function festivalWhenNice() {
 }
 
 function festivalWhenNegative() {
-    let buttonArray = [new Button('ok, ok. Es ist im Juli', 0, showWriting.bind(null, wait, festivalWhenNegative2))]
+    var buttonArray = [new Button('ok, ok. Es ist im Juli', 0, showWriting.bind(null, wait, festivalWhenNegative2))]
     addMessage('Warum bist du so frech zu mir? Du willst schliesslich etwas von mir..', 'server');
     setButtons(buttonArray)
     
 }
 
 function festivalWhenNegative2() {
-    let buttonArray = [new Button('Mitte', 0, showWriting.bind(null, wait, festivalWhenNice))]
+    var buttonArray = [new Button('Mitte', 0, showWriting.bind(null, wait, festivalWhenNice))]
     addMessage('Wann im Juli? Lass dir doch nicht alles aus der Nase ziehen.', 'server');
     setButtons(buttonArray)
     
@@ -285,7 +285,7 @@ function festivalWhenNegative2() {
 
 // Birthday
 function birthdayAttend() {
-	let buttonArray = [new Button('Na klar! Ich freue mich bereits auf das Grillfest :)', 1, showWriting.bind(null, wait, birthdayAttendNice)),
+	var buttonArray = [new Button('Na klar! Ich freue mich bereits auf das Grillfest :)', 1, showWriting.bind(null, wait, birthdayAttendNice)),
 						new Button('Ich bin noch nicht ganz sicher..', 0, showWriting.bind(null, wait, birthdayAttendNeutral)),
 						new Button('Warum sollte ich? Die mochte ich eh nie.', -1, showWriting.bind(null, wait, birthdayAttendNegative))]
 	setButtons(buttonArray);
@@ -333,7 +333,7 @@ function birthdayAttendNegative() {
 /// Kitchen Help
 
 function birthdayKitchenAttend() {
-	let buttonArray = [new Button('Ich helfe gerne!', 1, showWriting.bind(null, wait, birthdayKitchenAttendNice)),
+	var buttonArray = [new Button('Ich helfe gerne!', 1, showWriting.bind(null, wait, birthdayKitchenAttendNice)),
 						new Button('Hmm.. Mal schauen, ob ich Zeit habe.', 0, showWriting.bind(null, wait, birthdayKitchenAttendNeutral)),
 						new Button('Wenns UNBEDINGT sein muss.', -1, showWriting.bind(null, wait, birthdayKitchenAttendNegative))]
 	setButtons(buttonArray);
@@ -373,7 +373,7 @@ function birthdayKitchenAttendNegative() {
 
 
 function festivalBother() {
-	let buttonArray = [new Button('Also, wegen diesem Festival...', 0, showWriting.bind(null, wait, festivalBotherNice)),
+	var buttonArray = [new Button('Also, wegen diesem Festival...', 0, showWriting.bind(null, wait, festivalBotherNice)),
 						new Button('Was ist jetzt mit dem Geld fürs Festival?', -1, showWriting.bind(null, wait, festivalBotherNegative))]
 	setButtons(buttonArray);
 }
@@ -385,7 +385,7 @@ function festivalBotherNice() {
 }
 
 function festivalBotherNegative() {
-	let buttonArray = [new Button('Das stimmt doch jetzt nicht so...', 0,  festivalBotherNegative2)]
+	var buttonArray = [new Button('Das stimmt doch jetzt nicht so...', 0,  festivalBotherNegative)]
     addMessage('Dir gehts auch immer nur um das eine!', 'server');
     showWriting(wait, function festivalBotherNegative() {
     	addMessage('Ich habe das Gefühl, du schätzt mich als Mutter nicht', 'server');
@@ -403,36 +403,36 @@ function festivalBotherNegative() {
 
 
 function cashMoney() {
-	let buttonArray = [new Button('250.-, fürs Ticket und Zugbillet', 1, showWriting.bind(null, wait, cashMoneyNice)),
+	var buttonArray = [new Button('250.-, fürs Ticket und Zugbillet', 1, showWriting.bind(null, wait, cashMoneyNice)),
 	new Button('So viel wie möglich, ich will ja auch leben..', -1, showWriting.bind(null, wait, cashMoneyNegative))]
    
     showWriting(wait, function festivalBotherNegative() {
     	addMessage('Wie viel brauchst du denn?', 'server');
     	setButtons(buttonArray);
   	});
-    
+   
 }
 
 
 function cashMoneyNice() {
-	let buttonArray = [new Button('Wow, danke dir! :)', 0, decision)]
+	var buttonArray = [new Button('Wow, danke dir! :)', 0, decision)]
    	addMessage('Hmm.. Aber leben musst du dort ja auch noch, oder?', 'server');
     showWriting(wait, function cashMoneyNice() {
     	addMessage('Dann wären es sicher 350, mit Essen und so.', 'server');
     	setButtons(buttonArray);
   	});
-    
+   
 }
 
 
 function cashMoneyNegative() {
-	let buttonArray = [new Button('Ja, vielleicht...', 0, decision)]
+	var buttonArray = [new Button('Ja, vielleicht...', 0, decision)]
    	addMessage('Dann beginne doch, dein eigenes Geld zu verdienen!', 'server');
     showWriting(wait, function cashMoneyNegative() {
     	addMessage('Ich denke 300.- müssten reichen, oder?', 'server');
     	setButtons(buttonArray);
   	});
-    
+   
 }
 
 // ENDINGS
