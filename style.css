@@ -360,7 +360,7 @@ h6 {
 	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
 }
 
-canvas#canvas {
+canvas#confetti {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -368,6 +368,7 @@ canvas#canvas {
 	left: 0;
 	width: 100%;
 	height: 100%;
+	pointer-events: none;
 }
 
 .winscreen {
@@ -397,7 +398,7 @@ canvas#canvas {
 	text-shadow: 0 0 5px black;
 }
 
-canvas#canvas {
+canvas#confetti {
 	display: none;
 }
 

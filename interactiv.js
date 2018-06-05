@@ -20,7 +20,7 @@ let onlineCheck = setInterval(function () {
 	}
 }, 5000);
 
-function initialClick(duration, callback){
+function initialClick(duration, callback) {
 	scrollToBottom();
 	document.querySelector('.welcome').style.display = 'none';
 	showWriting(duration, callback);
@@ -93,6 +93,7 @@ function showTyping(duration, callback) {
 	idleTimeLeft = 20;
 	document.querySelector('.typing-message').style.display = 'inline-block';
 	document.querySelector('.lastonline').innerText = 'schreibt…';
+	document.querySelector('.welcome').style.display = 'none';
 	setTimeout(function () {
 		document.querySelector('.typing-message').style.display = 'none';
 		document.querySelector('.lastonline').innerText = 'online';
@@ -106,4 +107,29 @@ function showTyping(duration, callback) {
 function scrollToBottom() {
 	let element = document.querySelector('.messages');
 	element.scrollTop = element.scrollHeight - element.clientHeight;
+}
+
+function loadScript(url, callback = null) {
+	
+	var script = document.createElement("script")
+	script.type = "text/javascript";
+	
+	if (callback) {
+		if (script.readyState) {  //IE
+			script.onreadystatechange = function () {
+				if (script.readyState == "loaded" ||
+					script.readyState == "complete") {
+					script.onreadystatechange = null;
+					callback();
+				}
+			};
+		} else {  //Others
+			script.onload = function () {
+				callback();
+			};
+		}
+	}
+	
+	script.src = url;
+	document.getElementsByTagName("head")[0].appendChild(script);
 }

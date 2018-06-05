@@ -385,7 +385,7 @@ function festivalBotherNice() {
 }
 
 function festivalBotherNegative() {
-	var buttonArray = [new Button('Das stimmt doch jetzt nicht so...', 0,  festivalBotherNegative)]
+	var buttonArray = [new Button('Das stimmt doch jetzt nicht so...', 0,  decision)]
     addMessage('Dir gehts auch immer nur um das eine!', 'server');
     showWriting(wait, function festivalBotherNegative() {
     	addMessage('Ich habe das Gefühl, du schätzt mich als Mutter nicht', 'server');
@@ -405,12 +405,10 @@ function festivalBotherNegative() {
 function cashMoney() {
 	var buttonArray = [new Button('250.-, fürs Ticket und Zugbillet', 1, showWriting.bind(null, wait, cashMoneyNice)),
 	new Button('So viel wie möglich, ich will ja auch leben..', -1, showWriting.bind(null, wait, cashMoneyNegative))]
-   
     showWriting(wait, function festivalBotherNegative() {
     	addMessage('Wie viel brauchst du denn?', 'server');
     	setButtons(buttonArray);
   	});
-   
 }
 
 
@@ -439,13 +437,22 @@ function cashMoneyNegative() {
 
 
 function decision() {
-	if(impact > 2){
-		endGood()
+	if(impact > 4){
+		endGood();
+		loadScript('confetti.js');
 	} else if(impact < 0){
+		loadScript('https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js',loadScript.bind(null,'gravity.js',showGravity));
 		endBad()
 	} else {
-		endNeutral()
+		endNeutral();
+		loadScript('confetti.js');
 	}
+}
+
+function showGravity() {
+	$('#messagewrapper').jGravity({
+		target:'.message'
+	});
 }
 
 
@@ -466,7 +473,7 @@ function endGood() {
 
 function showWin() {
     document.querySelector('.winscreen').style.display = 'flex';
-    document.querySelector('#canvas').style.display = 'block';
+    document.querySelector('#confetti').style.display = 'block';
 }
 
 function endNeutral() {
@@ -494,6 +501,10 @@ function endBad() {
 	        addMessage('Du warst so unhöflich mit mir in letzter Zeit.', 'server');
 	        showWriting(wait, function endBad() {
 	            addMessage('Von mir bekommst du keinen Rappen! Sieh doch selbst zu, wie du zu deinem Geld kommst.', 'server');
+				$('#messagewrapper').jGravity({
+					target: '.message',
+					drag: false
+				});
 	        })
 	    })
 	})

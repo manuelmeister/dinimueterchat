@@ -1,6 +1,6 @@
 let W = window.innerWidth;
 let H = window.innerHeight;
-const canvas = document.getElementById("canvas");
+const canvas = document.getElementById("confetti");
 const context = canvas.getContext("2d");
 const maxConfettis = 150;
 const particles = [];
